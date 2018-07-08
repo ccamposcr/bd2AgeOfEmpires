@@ -1,0 +1,27 @@
+insert into RESERVACENTRAL VALUES(01,5000000,2000000,2000000,2,4);
+insert into TESORO VALUES(02,40000,20000,10000,0);
+insert into TESORO VALUES(03,40000,20000,10000,0);
+insert into TESORO VALUES(04,40000,20000,10000,0);
+insert into TESORO VALUES(05,40000,20000,10000,0);
+insert into TESORO VALUES(06,40000,20000,10000,0);
+insert into TESORO VALUES(07,40000,20000,10000,0);
+insert into TESORO VALUES(08,40000,20000,10000,0);
+insert into TESORO VALUES(09,40000,20000,10000,0);
+insert into TESORO VALUES(10,40000,20000,10000,0);
+insert into TESORO VALUES(11,40000,20000,10000,0);
+insert into TESORO VALUES(12,40000,20000,10000,0);
+insert into TESORO VALUES(13,40000,20000,10000,0);
+insert into Reino VALUES(010,'ACUARIO','www','ENERO',0,0,0,0,0,0,0,02,01);
+insert into Reino VALUES(011,'ARIES','www','MARZO',0,0,0,0,0,0,0,03,01);
+insert into Reino VALUES(012,'CANCER','www','JUNIO',0,0,0,0,0,0,0,02,01);
+insert into Reino VALUES(013,'CAPRICORNIO','www','DICIEMBRE',0,0,0,0,0,0,0,04,01);
+insert into Reino VALUES(014,'ESCORPION','www','OCTUBRE',0,0,0,0,0,0,0,05,01);
+insert into Reino VALUES(015,'GEMINIS','www','MAYO',0,0,0,0,0,0,0,06,01);
+insert into Reino VALUES(016,'LEO','www','JULIO',0,0,0,0,0,0,0,07,01);
+insert into Reino VALUES(017,'LIBRA','www','SEPTIEMBRE',0,0,0,0,0,0,0,08,01);
+insert into Reino VALUES(018,'PISCIS','www','FEBRERO',0,0,0,0,0,0,0,09,01);
+insert into Reino VALUES(019,'SAGITARIO','www','NOVIEMBRE',0,0,0,0,0,0,0,10,01);
+insert into Reino VALUES(020,'TAURO','www','ABRIL',0,0,0,0,0,0,0,11,01);
+insert into Reino VALUES(021,'VIRGO','www','AGOSTO',0,0,0,0,0,0,0,12,01);
+
+
