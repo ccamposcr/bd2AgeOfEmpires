@@ -23,3 +23,4 @@ insert into Reino VALUES(018,'PISCIS','www','FEBRERO',0,0,0,0,0,0,0,10,01);
 insert into Reino VALUES(019,'SAGITARIO','www','NOVIEMBRE',0,0,0,0,0,0,0,11,01);
 insert into Reino VALUES(020,'TAURO','www','ABRIL',0,0,0,0,0,0,0,12,01);
 insert into Reino VALUES(021,'VIRGO','www','AGOSTO',0,0,0,0,0,0,0,13,01);
+commit;
