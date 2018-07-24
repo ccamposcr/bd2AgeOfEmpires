@@ -21,8 +21,16 @@ BEGIN
                 totalCostoMadera := cantidad * indice2.precioMadera;
                IF cantidad <= indice2.cantMadera AND totalCostoMadera <= indice.cantidadDeOro THEN 
                     UPDATE Tesoro
-                    SET cantidadDeMadera = cantidadDeMadera + cantidad
+                    SET cantidadDeMadera = cantidadDeMadera + cantidad, cantidadDeOro = cantidadDeOro - totalCostoMadera
                     WHERE idTesoro = indice.idTesoro;
+                    
+                    UPDATE Reino
+                    SET cantidadCoronas = cantidadCoronas + 5
+                    WHERE idReino = indice.idReino;
+                    
+                    UPDATE ReservaCentral
+                    SET cantOro = cantOro + totalCostoMadera
+                    WHERE idReserva = indice2.idReserva;
                 ELSE
                     DBMS_OUTPUT.PUT_LINE('No hay suficiente madera en la reserva Central o No tiene suficiente Oro en el reino');
                 END IF;
@@ -30,8 +38,16 @@ BEGIN
                 totalCostoHierro := cantidad * indice2.precioHierro;
                 IF cantidad <= indice2.cantHierro AND totalCostoHierro <= indice.cantidadDeOro THEN
                     UPDATE Tesoro
-                    SET cantidadDeHierro = cantidadDeHierro + cantidad
+                    SET cantidadDeHierro = cantidadDeHierro + cantidad, cantidadDeOro = cantidadDeOro - totalCostoHierro
                     WHERE idTesoro = indice.idTesoro;
+                    
+                    UPDATE Reino
+                    SET cantidadCoronas = cantidadCoronas + 5
+                    WHERE idReino = indice.idReino;
+                    
+                    UPDATE ReservaCentral
+                    SET cantOro = cantOro + totalCostoHierro
+                    WHERE idReserva = indice2.idReserva;
                 ELSE
                     DBMS_OUTPUT.PUT_LINE('No hay suficiente hierro en la reserva Central o No tiene suficiente Oro en el reino');
                 END IF;
