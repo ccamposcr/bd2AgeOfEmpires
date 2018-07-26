@@ -1,17 +1,13 @@
-CREATE OR REPLACE PROCEDURE INICIALIZAR 
-  ( idReino int, cantOro float, cantMadera float, cantHierro float)
+CREATE OR REPLACE PROCEDURE inicializar
+  ( idReino int, cantOro int, cantMadera int, cantHierro int, cantCoronas int)
 IS
   CURSOR curReino(identReino int) is
    SELECT tesoro_idtesoro FROM reino where idreino = identReino;
    tesoro_idtesoro reino.tesoro_idtesoro%type;
 BEGIN
-  open curReino(idReino);
-    LOOP
-     fetch curReino into tesoro_idtesoro;
-     UPDATE Tesoro 
-     SET cantidaddeoro = cantOro , cantidaddemadera = cantMadera, cantidaddehierro = cantHierro
-     WHERE idTesoro = tesoro_idtesoro;
-    END LOOP;
-  close curReino;
-END;
+     UPDATE tesoro 
+     SET cantoro = cantOro , cantmadera = cantMadera, canthierro = cantHierro, puntosdecoronas = cantCoronas 
+     WHERE idtesoro = idReino;
+     dbms_output.put_line( 'La informacion ingreso con exito ');
+END inicializar;
 /
