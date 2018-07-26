@@ -1,21 +1,14 @@
-CREATE OR REPLACE PROCEDURE ATACAR
+CREATE OR REPLACE PROCEDURE atacar
  ( reinoAtacante int, reinoDefensa int)
 IS
   CURSOR curataque(identAtaque int) IS
      SELECT t.cantoro, r.puntosataque, r.puntosdefensa 
-     FROM reino r join tesoro t WHERE idreino = identAtaque;
-     cantoro tesoro.cantoro%type;
-     puntosataque reino.puntosataque%type;
-     puntosdefensa reino.puntosdefensa%type;
-
-  CURSOR curdefensa(identDefensa int) IS
-     SELECT t.cantoro, r.puntosataque, r.puntosdefensa 
-     FROM reino r join tesoro t WHERE idreino = identAtaque;
-     cantoro tesoro.cantoro%type;
-     puntosataque reino.puntosataque%type;
-     puntosdefensa reino.puntosdefensa%type;
+     FROM reino r join tesoro t ON r.idreino = identAtaque;
+     cantoro t.cantoro%type;
+     puntosataque r.puntosataque%type;
+     puntosdefensa r.puntosdefensa%type;
 BEGIN
-     open curataque(reinoatacante);
+     open curataque(reinoAtacante);
       LOOP
          fetch curataque into cantoro, puntosataque, puntosataque;
           IF cantoro <= 1000 then
