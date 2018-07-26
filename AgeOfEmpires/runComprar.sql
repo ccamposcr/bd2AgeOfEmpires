@@ -1,4 +1,4 @@
 BEGIN
-    comprar('madera','Acuario', 100);
+    comprar('madera','Acuario', 20000);
 END;
 /

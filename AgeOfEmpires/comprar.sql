@@ -6,12 +6,15 @@ IS
         from Reino
         INNER JOIN Tesoro ON Reino.Tesoro_IDTesoro = Tesoro.IDTesoro
         where Reino.nombre = UPPER(reino);
+        
     CURSOR cursor_reservaCentral is
         SELECT IDReserva, precioMadera, precioHierro, cantMadera, cantHierro
         from ReservaCentral;
         
     totalCostoMadera float := 0;
     totalCostoHierro float := 0;
+    calculoProporcion float := 0;
+    
 BEGIN
     FOR indice IN cursor_reino
     LOOP
@@ -28,9 +31,12 @@ BEGIN
                     SET cantCoronas = cantCoronas + 5
                     WHERE idReino = indice.idReino;
                     
+                    calculoProporcion := (cantidad * 100) / indice2.cantMadera;
+                    
                     UPDATE ReservaCentral
-                    SET cantOro = cantOro + totalCostoMadera
+                    SET cantOro = cantOro + totalCostoMadera, precioMadera = (precioMadera + (precioMadera * calculoProporcion) / 100), cantMadera = cantMadera - cantidad 
                     WHERE idReserva = indice2.idReserva;
+                    
                 ELSE
                     DBMS_OUTPUT.PUT_LINE('No hay suficiente madera en la reserva Central o No tiene suficiente Oro en el reino');
                 END IF;
@@ -45,9 +51,12 @@ BEGIN
                     SET cantCoronas = cantCoronas + 5
                     WHERE idReino = indice.idReino;
                     
+                    calculoProporcion := (cantidad * 100) / indice2.cantHierro;
+                    
                     UPDATE ReservaCentral
-                    SET cantOro = cantOro + totalCostoHierro
+                    SET cantOro = cantOro + totalCostoHierro, precioHierro = (precioHierro + (precioHierro * calculoProporcion) / 100), cantHierro = cantHierro - cantidad
                     WHERE idReserva = indice2.idReserva;
+                    
                 ELSE
                     DBMS_OUTPUT.PUT_LINE('No hay suficiente hierro en la reserva Central o No tiene suficiente Oro en el reino');
                 END IF;
