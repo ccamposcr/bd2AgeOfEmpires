@@ -32,11 +32,11 @@ BEGIN
                 CASE UPPER(defensa)
                     WHEN 'CANONES' then
                         UPDATE Reino
-                        SET cantCanones = cantCanones + cantidad, cantCoronas = cantCoronas + (indice2.sumaDeCoronas * cantidad)
+                        SET cantCanones = cantCanones + cantidad, cantCoronas = cantCoronas + (indice2.sumaDeCoronas * cantidad), puntosDefensa = puntosDefensa + (indice2.puntosDeDefensa * cantidad)
                         WHERE idReino = indice.idReino;
                     WHEN 'TORRES' then
                         UPDATE Reino
-                        SET cantTorres = cantTorres + cantidad, cantCoronas = cantCoronas + (indice2.sumaDeCoronas * cantidad)
+                        SET cantTorres = cantTorres + cantidad, cantCoronas = cantCoronas + (indice2.sumaDeCoronas * cantidad), puntosDefensa = puntosDefensa + (indice2.puntosDeDefensa * cantidad)
                         WHERE idReino = indice.idReino;
                 END CASE;
                 

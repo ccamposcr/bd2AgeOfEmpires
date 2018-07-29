@@ -32,19 +32,19 @@ BEGIN
                 CASE UPPER(tropa)
                     WHEN 'ARQUERAS' then
                         UPDATE Reino
-                        SET cantArqueras = cantArqueras + cantidad, cantCoronas = cantCoronas + (indice2.sumaCoronas * cantidad)
+                        SET cantArqueras = cantArqueras + cantidad, cantCoronas = cantCoronas + (indice2.sumaCoronas * cantidad), puntosAtaque = puntosAtaque + (indice2.puntosAtaque * cantidad)
                         WHERE idReino = indice.idReino;
                     WHEN 'PIQUEROS' then
                         UPDATE Reino
-                        SET cantPiqueros = cantPiqueros + cantidad, cantCoronas = cantCoronas + (indice2.sumaCoronas * cantidad)
+                        SET cantPiqueros = cantPiqueros + cantidad, cantCoronas = cantCoronas + (indice2.sumaCoronas * cantidad), puntosAtaque = puntosAtaque + (indice2.puntosAtaque * cantidad)
                         WHERE idReino = indice.idReino;
                     WHEN 'CABALLEROS' then
                         UPDATE Reino
-                        SET cantCaballeros = cantCaballeros + cantidad, cantCoronas = cantCoronas + (indice2.sumaCoronas * cantidad)
+                        SET cantCaballeros = cantCaballeros + cantidad, cantCoronas = cantCoronas + (indice2.sumaCoronas * cantidad), puntosAtaque = puntosAtaque + (indice2.puntosAtaque * cantidad)
                         WHERE idReino = indice.idReino;
                     WHEN 'MAGOS' then
                         UPDATE Reino
-                        SET cantMagos = cantMagos + cantidad, cantCoronas = cantCoronas + (indice2.sumaCoronas * cantidad)
+                        SET cantMagos = cantMagos + cantidad, cantCoronas = cantCoronas + (indice2.sumaCoronas * cantidad), puntosAtaque = puntosAtaque + (indice2.puntosAtaque * cantidad)
                         WHERE idReino = indice.idReino;
                 END CASE;
                 
