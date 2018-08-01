@@ -5,7 +5,7 @@ IS
         SELECT IDReino, IDTesoro, cantMadera, cantHierro, cantOro
         from Reino
         INNER JOIN Tesoro ON Reino.Tesoro_IDTesoro = Tesoro.IDTesoro
-        where Reino.nombre = UPPER(reino);
+        where UPPER(Reino.nombre) = UPPER(reino);
         
     CURSOR cursor_reservaCentral is
         SELECT IDReserva, precioMadera, precioHierro, cantMadera, cantHierro
