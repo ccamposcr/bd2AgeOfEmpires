@@ -1,4 +1,4 @@
 BEGIN
-    inicializar(3, 50000, 30000, 20000, 2);
+    inicializar(1, 50000, 30000, 20000, 1);
 END;
 /
