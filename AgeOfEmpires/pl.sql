@@ -1,10 +1,10 @@
 CREATE TABLE bitacora (
     idbitacora        NUMBER(15) NOT NULL,
     fechahora         TIMESTAMP,
-    cantdoro       NUMBER(15),
-    canthierro    NUMBER(15),
-    cantmadera    NUMBER(15),
-    cantcoronas   NUMBER(15),
+    cantdoro          NUMBER(15),
+    canthierro        NUMBER(15),
+    cantmadera        NUMBER(15),
+    cantcoronas       NUMBER(15),
     tipotransaccion   NVARCHAR2(200),
     reino_idreino     NUMBER(15) NOT NULL
 );

@@ -6,6 +6,11 @@ IS
   subTotalDefensa number :=0;
   totalAtaque number := 0;
   totalDefensa number := 0;
+  recursoMadera number:= 0;
+  recursoHierro number := 0;
+  darOro number := 0;
+  totalOro number := 0;
+  totalOroDado number := 0;
 
   CURSOR curataque(identAtaque int) IS
      SELECT cantOro, puntosAtaque, puntosDefensa 
@@ -47,9 +52,42 @@ BEGIN
                 END LOOP;
                close curdefensa;
                IF totalAtaque > totalDefensa THEN
-                 dbms_output.put_line('El atacante gana');
+                   totalAtaque := puntosataque * 80 / 100;
+                    UPDATE reino
+                    SET puntosAtaque = totalAtaque
+                    WHERE idReino = reinoAtacante;
+                    open curdefensa(reinoDefensa);
+                     LOOP
+                       fetch curdefensa into cantorodef, cantmaderadef, canthierrodef, puntosataquedef, puntosdefensadef;
+                       exit when curdefensa%notfound;
+                           recursoHierro := canthierrodef * 65 / 100;
+                           recursoMadera := cantmaderadef * 65 / 100;
+                           UPDATE tesoro
+                           SET cantMadera = recursoMadera, cantHierro = recursoHierro
+                           WHERE idTesoro = reinoDefensa;
+                     END LOOP;
+                    close curdefensa;
+
                ELSE
-                  dbms_output.put_line('La defensa gana');   
+                    totalAtaque := puntosataque * 60 / 100;
+                    UPDATE reino
+                    SET puntosAtaque = totalAtaque
+                    WHERE idReino = reinoAtacante;
+                    darOro := cantoro * 30 / 100;
+                    totalOro := cantoro - darOro;
+                    UPDATE tesoro
+                    SET cantOro = totalOro
+                    WHERE idTesoro = reinoAtacante;
+                    open curdefensa(reinoDefensa);
+                     LOOP
+                       fetch curdefensa into cantorodef, cantmaderadef, canthierrodef, puntosataquedef, puntosdefensadef;
+                       exit when curdefensa%notfound;
+                            totalOroDado = cantorodef + darOro;
+                           UPDATE tesoro
+                           SET cantOro
+                           WHERE idTesoro = reinoDefensa;
+                     END LOOP;
+                    close curdefensa;
               END IF;
           ELSE 
                dbms_output.put_line('El ataque no es posible');
