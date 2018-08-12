@@ -8,6 +8,8 @@ IS
   totalDefensa number := 0;
   recursoMadera number:= 0;
   recursoHierro number := 0;
+  totalRecursoMadera number:= 0;
+  totalRecursoHierro number := 0;
   darOro number := 0;
   totalOro number := 0;
   totalOroDado number := 0;
@@ -49,10 +51,12 @@ BEGIN
                    exit when curdefensa%notfound;
                      totalDefensa := puntosdefensadef * 70 / 100;
                      dbms_output.put_line(totalDefensa);
+
                 END LOOP;
                close curdefensa;
                IF totalAtaque > totalDefensa THEN
-                   totalAtaque := puntosataque * 80 / 100;
+                    subTotalAtaque := puntosataque * 80 / 100;
+                    totalAtaque := puntosataque - subTotalAtaque;
                     UPDATE reino
                     SET puntosAtaque = totalAtaque
                     WHERE idReino = reinoAtacante;
@@ -62,14 +66,17 @@ BEGIN
                        exit when curdefensa%notfound;
                            recursoHierro := canthierrodef * 65 / 100;
                            recursoMadera := cantmaderadef * 65 / 100;
+                           totalRecursoHierro := canthierrodef - recursoHierro;
+                           totalRecursoMadera := cantmaderadef - recursoMadera;
                            UPDATE tesoro
-                           SET cantMadera = recursoMadera, cantHierro = recursoHierro
+                           SET cantMadera = totalRecursoMadera, cantHierro = totalRecursoHierro
                            WHERE idTesoro = reinoDefensa;
                      END LOOP;
                     close curdefensa;
 
                ELSE
-                    totalAtaque := puntosataque * 60 / 100;
+                    subTotalAtaque := puntosataque * 60 / 100;
+                    totalAtaque := puntosataque - subTotalAtaque;
                     UPDATE reino
                     SET puntosAtaque = totalAtaque
                     WHERE idReino = reinoAtacante;
@@ -82,9 +89,9 @@ BEGIN
                      LOOP
                        fetch curdefensa into cantorodef, cantmaderadef, canthierrodef, puntosataquedef, puntosdefensadef;
                        exit when curdefensa%notfound;
-                            totalOroDado = cantorodef + darOro;
+                            totalOroDado := cantorodef + darOro;
                            UPDATE tesoro
-                           SET cantOro
+                           SET cantOro = totalOroDado
                            WHERE idTesoro = reinoDefensa;
                      END LOOP;
                     close curdefensa;
