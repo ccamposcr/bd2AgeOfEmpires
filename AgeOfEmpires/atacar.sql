@@ -13,6 +13,10 @@ IS
   darOro number := 0;
   totalOro number := 0;
   totalOroDado number := 0;
+  subDefectoTotalAtaque number := 0;
+  defectoTotalAtaque number := 0;
+  subDefectoTotalDefensa number := 0;
+  defectoTotalDefensa number := 0;
 
   CURSOR curataque(identAtaque int) IS
      SELECT cantOro, puntosAtaque, puntosDefensa 
@@ -96,6 +100,19 @@ BEGIN
                      END LOOP;
                     close curdefensa;
               END IF;
+              open curdefensa(reinoDefensa);
+                LOOP
+                   fetch curdefensa into cantorodef, cantmaderadef, canthierrodef, puntosataquedef, puntosdefensadef;
+                   exit when curdefensa%notfound;
+                     subDefectoTotalAtaque := puntosataquedef * 20 / 100;
+                     defectoTotalAtaque := puntosataquedef - subDefectoTotalAtaque;
+                     subDefectoTotalDefensa := puntosdefensadef * 35 / 100;
+                     defectoTotalDefensa := puntosdefensadef - subDefectoTotalDefensa;
+                     UPDATE reino
+                     SET puntosAtaque = defectoTotalAtaque, puntosDefensa = defectoTotalDefensa
+                     WHERE idReino = reinoDefensa;
+                END LOOP;
+               close curdefensa;
           ELSE 
                dbms_output.put_line('El ataque no es posible');
           END IF;
