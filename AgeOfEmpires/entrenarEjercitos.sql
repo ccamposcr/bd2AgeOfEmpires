@@ -18,7 +18,7 @@ IS
         
     calculoProporcionMadera float := 0;
     calculoProporcionHierro float := 0;
-    nuevoOroReserva float := 0;
+    nuevoOroReserva number := 0;
     nuevoHierroReserva number := 0;
     nuevoMaderaReserva number := 0;
     nuevoPrecioMadera float := 0;

@@ -54,7 +54,7 @@ create sequence reino_sequence start with 1 increment by 1;
 
 CREATE TABLE reservacentral (
     idreserva      NUMBER(15) NOT NULL,
-    cantoro        FLOAT(15),
+    cantoro        NUMBER(100),
     cantmadera     NUMBER(15),
     canthierro     NUMBER(15),
     preciomadera   FLOAT(15),
@@ -66,7 +66,7 @@ ALTER TABLE reservacentral ADD CONSTRAINT reservacentral_pk PRIMARY KEY ( idrese
 create sequence reserva_sequence start with 1 increment by 1;
 CREATE TABLE tesoro (
     idtesoro           NUMBER(15) NOT NULL,
-    cantoro            NUMBER(15),
+    cantoro            NUMBER(100),
     cantmadera         NUMBER(15),
     canthierro         NUMBER(15),
     puntosdecoronas    NUMBER(15)    
