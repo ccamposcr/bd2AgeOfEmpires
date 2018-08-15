@@ -2,7 +2,7 @@ CREATE OR REPLACE PROCEDURE comprarDefensas
    ( defensa varchar2 , reino varchar2, cantidad float )
 IS
     CURSOR cursor_reino is
-        SELECT IDReino, IDTesoro, cantMadera, cantHierro, cantOro
+        SELECT IDReino, IDTesoro, cantMadera, cantHierro, cantOro, cantCoronas
         from Reino
         INNER JOIN Tesoro ON Reino.Tesoro_IDTesoro = Tesoro.IDTesoro
         where UPPER(Reino.nombre) = UPPER(reino);
@@ -53,10 +53,10 @@ BEGIN
             ELSE
                 DBMS_OUTPUT.PUT_LINE('No hay suficiente oro, hiero o madera en el reino');
             END IF;
-            INSERT into Bitacora values(bitacora_sequence.nextval, sysdate, indice.cantOro,indice.cantHierro,indice.cantMadera,0,'DEF', indice.IDReino);
-            commit;
+            INSERT into Bitacora values(bitacora_sequence.nextval, sysdate, indice.cantOro,indice.cantHierro,indice.cantMadera,indice.cantCoronas,'DEF', indice.IDReino);
+            
         END LOOP;
     END LOOP;
-
+commit;
 END;
 /

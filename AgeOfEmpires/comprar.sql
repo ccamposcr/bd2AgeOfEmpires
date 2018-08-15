@@ -2,7 +2,7 @@ CREATE OR REPLACE PROCEDURE comprar
    ( recurso varchar2 , reino varchar2, cantidad float )
 IS
     CURSOR cursor_reino is
-        SELECT IDReino, IDTesoro, cantMadera, cantHierro, cantOro
+        SELECT IDReino, IDTesoro, cantMadera, cantHierro, cantOro, cantCoronas
         from Reino
         INNER JOIN Tesoro ON Reino.Tesoro_IDTesoro = Tesoro.IDTesoro
         where UPPER(Reino.nombre) = UPPER(reino);
@@ -62,10 +62,9 @@ BEGIN
                 END IF;
             END IF;
             
-            INSERT into Bitacora values(bitacora_sequence.nextval, sysdate, indice.cantOro,indice.cantHierro,indice.cantMadera,0,'CMP', indice.IDReino);
-            commit;
+            INSERT into Bitacora values(bitacora_sequence.nextval, sysdate, indice.cantOro,indice.cantHierro,indice.cantMadera,indice.cantCoronas,'CMP', indice.IDReino);
         END LOOP;
     END LOOP;
-
+commit;
 END;
 /
