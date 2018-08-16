@@ -18,6 +18,11 @@ IS
         
     calculoProporcionMadera float := 0;
     calculoProporcionHierro float := 0;
+    nuevoOroReserva number := 0;
+    nuevoHierroReserva number := 0;
+    nuevoMaderaReserva number := 0;
+    nuevoPrecioMadera float := 0;
+    nuevoPrecioHierro float := 0;
     
 BEGIN
     FOR indice IN cursor_reino
@@ -44,9 +49,14 @@ BEGIN
                 LOOP
                     calculoProporcionMadera := (cantidad * 100) / indice3.cantMadera;
                     calculoProporcionHierro := (cantidad * 100) / indice3.cantHierro;
+                    nuevoOroReserva :=  indice3.cantOro + (indice2.costoEnOro * cantidad);
+                    nuevoHierroReserva := indice3.cantHierro + (indice2.costoEnHierro * cantidad);
+                    nuevoMaderaReserva := indice3.cantMadera + (indice2.costoEnMadera * cantidad);
+                    nuevoPrecioMadera := indice3.precioMadera - (indice3.precioMadera * calculoProporcionMadera);
+                    nuevoPrecioHierro := indice3.precioHierro - (indice3.precioHierro * calculoProporcionHierro);
                     
                     UPDATE ReservaCentral
-                    SET cantHierro = cantHierro + (indice2.costoEnHierro * cantidad), cantOro = cantOro + (indice2.costoEnOro * cantidad), cantMadera = cantMadera + (indice2.costoEnMadera * cantidad), precioMadera = (precioMadera - (precioMadera * calculoProporcionMadera) / 100), precioHierro = (precioHierro - (precioHierro * calculoProporcionHierro) / 100)  
+                    SET cantHierro = nuevoHierroReserva, cantOro = nuevoOroReserva, cantMadera = nuevoMaderaReserva, precioMadera = nuevoPrecioMadera, precioHierro = nuevoPrecioHierro  
                     WHERE idReserva = indice3.idReserva;
                 END LOOP;
                 
