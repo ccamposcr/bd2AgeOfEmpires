@@ -34,7 +34,7 @@ BEGIN
                     calculoProporcion := (cantidad * 100) / indice2.cantMadera;
                     
                     UPDATE ReservaCentral
-                    SET cantOro = cantOro + totalCostoMadera, precioMadera = (precioMadera + (precioMadera * calculoProporcion) / 100), cantMadera = cantMadera - cantidad 
+                    SET cantOro = cantOro + totalCostoMadera, precioMadera = (precioMadera + (precioMadera * calculoProporcion)/100), cantMadera = cantMadera - cantidad 
                     WHERE idReserva = indice2.idReserva;
                     
                 ELSE
@@ -54,7 +54,7 @@ BEGIN
                     calculoProporcion := (cantidad * 100) / indice2.cantHierro;
                     
                     UPDATE ReservaCentral
-                    SET cantOro = cantOro + totalCostoHierro, precioHierro = (precioHierro + (precioHierro * calculoProporcion) / 100), cantHierro = cantHierro - cantidad
+                    SET cantOro = cantOro + totalCostoHierro, precioHierro = (precioHierro + (precioHierro * calculoProporcion)/100), cantHierro = cantHierro - cantidad
                     WHERE idReserva = indice2.idReserva;
                     
                 ELSE

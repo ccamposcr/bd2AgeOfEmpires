@@ -60,11 +60,11 @@ BEGIN
                     nuevoOroReserva :=  indice3.cantOro + (indice2.costoOro * cantidad);
                     nuevoHierroReserva := indice3.cantHierro + (indice2.costoHierro * cantidad);
                     nuevoMaderaReserva := indice3.cantMadera + (indice2.costoMadera * cantidad);
-                    nuevoPrecioMadera := indice3.precioMadera - ((indice3.precioMadera * calculoProporcionMadera) / 100);
-                    nuevoPrecioHierro := indice3.precioHierro - ((indice3.precioHierro * calculoProporcionHierro) / 100);
+                    nuevoPrecioMadera := indice3.precioMadera - (indice3.precioMadera * calculoProporcionMadera);
+                    nuevoPrecioHierro := indice3.precioHierro - (indice3.precioHierro * calculoProporcionHierro);
                     
                     UPDATE ReservaCentral
-                    SET cantHierro = nuevoHierroReserva, cantOro = nuevoOroReserva, cantMadera = nuevoMaderaReserva, precioMadera = nuevoPrecioMadera, precioHierro = nuevoPrecioHierro  
+                    SET cantHierro = nuevoHierroReserva, cantOro = nuevoOroReserva, cantMadera = nuevoMaderaReserva, precioMadera = nuevoPrecioMadera, precioHierro = nuevoPrecioHierro
                     WHERE idReserva = indice3.IDReserva;
                 END LOOP;
                 
