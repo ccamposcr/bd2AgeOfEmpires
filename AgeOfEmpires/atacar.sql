@@ -13,18 +13,22 @@ IS
   darOro number := 0;
   totalOro number := 0;
   totalOroDado number := 0;
+  totalCoronas number := 0;
   subDefectoTotalAtaque number := 0;
   defectoTotalAtaque number := 0;
   subDefectoTotalDefensa number := 0;
   defectoTotalDefensa number := 0;
 
   CURSOR curataque(identAtaque int) IS
-     SELECT cantOro, puntosAtaque, puntosDefensa 
+     SELECT cantOro, puntosAtaque, puntosDefensa, cantCoronas, cantMadera, cantHierro
      FROM reino r JOIN tesoro t ON r.idreino = t.idtesoro 
      WHERE idReino = identAtaque;
      cantoro tesoro.cantOro%type;
      puntosataque reino.puntosAtaque%type;
      puntosdefensa reino.puntosDefensa%type;
+     cantcoronas reino.cantCoronas%type;
+     cantmadera tesoro.cantMadera%type;
+     canthierro tesoro.cantHierro%type;
 
   CURSOR curdefensa(identDefensa int) IS 
       SELECT cantOro, cantMadera, cantHierro, puntosAtaque, puntosDefensa
@@ -38,7 +42,7 @@ IS
 BEGIN
      open curataque(reinoAtacante);
       LOOP
-         fetch curataque into cantoro, puntosataque, puntosdefensa;
+         fetch curataque into cantoro, puntosataque, puntosdefensa, cantcoronas, cantmadera, canthierro;
          exit when curataque%notfound;
           IF cantoro >= 1000 then
                UPDATE tesoro
@@ -47,22 +51,19 @@ BEGIN
                subTotalAtaque :=  puntosataque * 80 / 100;
                subTotalAtaqueBonus := puntosataque * 60 / 100;
                totalAtaque := subTotalAtaque + subTotalAtaqueBonus;
-               dbms_output.put_line(subTotalAtaqueBonus);
-               dbms_output.put_line(subTotalAtaque);
                open curdefensa(reinoDefensa);
                 LOOP
                    fetch curdefensa into cantorodef, cantmaderadef, canthierrodef, puntosataquedef, puntosdefensadef;
                    exit when curdefensa%notfound;
                      totalDefensa := puntosdefensadef * 70 / 100;
-                     dbms_output.put_line(totalDefensa);
-
                 END LOOP;
                close curdefensa;
                IF totalAtaque > totalDefensa THEN
                     subTotalAtaque := puntosataque * 80 / 100;
                     totalAtaque := puntosataque - subTotalAtaque;
+                    totalCoronas := cantcoronas + 2;
                     UPDATE reino
-                    SET puntosAtaque = totalAtaque
+                    SET puntosAtaque = totalAtaque, cantCoronas = totalCoronas
                     WHERE idReino = reinoAtacante;
                     open curdefensa(reinoDefensa);
                      LOOP
@@ -116,7 +117,7 @@ BEGIN
           ELSE 
                dbms_output.put_line('El ataque no es posible');
           END IF;
-         
+           INSERT into Bitacora values(bitacora_sequence.nextval, sysdate, cantoro, canthierro, cantmadera, cantcoronas,'ATK', reinoAtacante);
       END LOOP;
     close curataque;
 END;
