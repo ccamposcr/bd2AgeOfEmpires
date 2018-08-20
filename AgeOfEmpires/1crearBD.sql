@@ -99,4 +99,6 @@ ALTER TABLE reino
 ALTER TABLE reino
     ADD CONSTRAINT reino_tesoro_fk FOREIGN KEY ( tesoro_idtesoro )
         REFERENCES tesoro ( idtesoro );
+ALTER TABLE reino
+ADD ranking float(15);
 
