@@ -1,4 +1,0 @@
-begin
-  mejorarAtaque('TAURO');
-end;
-/
