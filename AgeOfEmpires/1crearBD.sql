@@ -93,12 +93,14 @@ ALTER TABLE bitacora
         REFERENCES reino ( idreino );
 
 ALTER TABLE reino
+ADD ranking float(15);
+
+ALTER TABLE reino
     ADD CONSTRAINT reino_reservacentral_fk FOREIGN KEY ( reservacentral_idreserva )
         REFERENCES reservacentral ( idreserva );
 
 ALTER TABLE reino
     ADD CONSTRAINT reino_tesoro_fk FOREIGN KEY ( tesoro_idtesoro )
         REFERENCES tesoro ( idtesoro );
-ALTER TABLE reino
-ADD ranking float(15);
+
 
