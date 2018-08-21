@@ -3,7 +3,7 @@ create or replace procedure mejorarAtaque(nomReino varchar2 ) is
    reinoid number(15);
    nombRei varchar2(200):=nomReino;
    cursor rein is
-   select tesoro_idtesoro tesoro,reservacentral_idreserva reserva,t.cantoro cant
+   select tesoro_idtesoro tesoro,reservacentral_idreserva reserva,t.cantoro cant,t.cantmadera mad,t.canthierro hierr 
    from reino
    join tesoro t on (t.idtesoro=reino.tesoro_idtesoro)
    where UPPER(nombre)=UPPER(nombRei);
@@ -13,7 +13,7 @@ begin
   where UPPER(nombre) = UPPER(nombRei);
   
   for def in rein loop
-    if def.cant< 1500 then
+    if def.cant< 1500 and def.mad<300 and def.hierr <200 then
       
      raise error; 
     
@@ -32,8 +32,8 @@ begin
 
     insert into bitacora values (bitacora_sequence.nextval,sysdate,1500,300,200,5,'M+A',reinoid);
     update reino
-    set puntosdefensa=puntosdefensa * 10/100+500,
-    cantcoronas=cantcoronas +40
+    set puntosAtaque=puntosAtaque * 10/100+300,
+    cantcoronas=cantcoronas +5
     where idreino =reinoid;
     end if;
   end loop;
@@ -41,6 +41,6 @@ Exception
   when no_data_found 
   then DBMS_OUTPUT.PUT_LINE('El Reino no se encontro');
  when error then 
-   DBMS_OUTPUT.PUT_LINE('El reino no tiene sufiente oro');
+   DBMS_OUTPUT.PUT_LINE('El reino no tiene sufiente recursos de hierro,madera y oro');
 end mejorarAtaque;
 /
