@@ -34,7 +34,7 @@
             LOOP
                 FOR indice2 IN cursor_reservaCentral
                 LOOP
-                    IF recurso = 'madera' THEN
+                    IF UPPER(recurso) = 'MADERA' THEN
                         totalCostoMadera := cantidad * indice2.precioMadera;
                        IF cantidad <= indice2.cantMadera AND totalCostoMadera <= indice.cantOro THEN 
                             UPDATE Tesoro
@@ -104,7 +104,7 @@
             LOOP
                 FOR indice2 IN cursor_reservaCentral
                 LOOP
-                    IF recurso = 'madera' THEN
+                    IF UPPER(recurso) = 'MADERA' THEN
                         totalCostoMadera := cantidad * indice2.precioMadera;
                        IF cantidad <= indice.cantMadera AND totalCostoMadera <= indice2.cantOro THEN 
                             UPDATE Tesoro
