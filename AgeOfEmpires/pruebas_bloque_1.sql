@@ -10,3 +10,5 @@ execute AOE.entrenarEjercitos('Piqueros','Libra',50);
 execute AOE.comprarDefensas('Torres','Libra',4);
 execute AOE.comprar('Hierro','Virgo',6000);
 execute AOE.comprarDefensas('Canones','Virgo',6);
+execute AOE.entrenarEjercitos('Caballeros','Leo',60);
+execute AOE.entrenarEjercitos('Magos','Leo',40);
