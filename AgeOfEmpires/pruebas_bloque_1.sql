@@ -18,3 +18,5 @@ execute AOE.entrenarEjercitos('Arqueras','Geminis',50);
 execute AOE.entrenarEjercitos('Piqueros','Geminis',50);
 execute AOE.comprarDefensas('Canones','Tauro',15);
 execute AOE.mejorarDefensa('Tauro');
+execute AOE.entrenarEjercitos('Piqueros','Aries',60);
+execute AOE.mejorarAtaque('Aries');
