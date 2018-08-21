@@ -31,6 +31,7 @@ begin
     where idreserva=def.reserva;
 
     insert into bitacora values (bitacora_sequence.nextval,sysdate,1500,300,200,5,'M+A',reinoid);
+    
     update reino
     set puntosAtaque=puntosAtaque * 10/100+300,
     cantcoronas=cantcoronas +5
