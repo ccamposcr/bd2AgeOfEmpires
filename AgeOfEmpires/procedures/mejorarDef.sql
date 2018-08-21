@@ -33,7 +33,7 @@ begin
     insert into bitacora values (bitacora_sequence.nextval,sysdate,2000,150,100,40,'M+D',reinoid);
 
     update reino
-    set puntosdefensa=puntosdefensa * 10/100+500,
+    set puntosdefensa=(puntosdefensa * 10/100)+500,
     cantcoronas=cantcoronas +40
     where idreino =reinoid;
    end if;

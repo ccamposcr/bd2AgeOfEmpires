@@ -340,16 +340,18 @@
         insert into bitacora values (bitacora_sequence.nextval,sysdate,2000,150,100,40,'M+D',reinoid);
 
         update reino
-         set puntosdefensa=puntosdefensa * 10/100+500,
+         set puntosdefensa=(puntosdefensa * 10/100)+500,
          cantcoronas=cantcoronas +40
          where idreino =reinoid;
        end if;
       end loop;
+      commit;
     Exception
      when no_data_found 
      then DBMS_OUTPUT.PUT_LINE('El reino no se encontro');
      when error then 
      DBMS_OUTPUT.PUT_LINE('El reino no tiene sufiente oro');
+     
   end mejorarDefensa;
 
         procedure mejorarAtaque(nomReino varchar2 ) is
@@ -386,16 +388,18 @@
 
          insert into bitacora values (bitacora_sequence.nextval,sysdate,1500,300,200,5,'M+A',reinoid);
          update reino
-         set puntosdefensa=puntosdefensa * 10/100+500,
+         set puntosataque=(puntosataque * 10/100)+500,
          cantcoronas=cantcoronas +40
          where idreino =reinoid;
          end if;
         end loop;
+        commit;
        Exception
         when no_data_found 
         then DBMS_OUTPUT.PUT_LINE('El Reino no se encontro');
         when error then 
         DBMS_OUTPUT.PUT_LINE('El reino no tiene sufiente oro');
+        
       end mejorarAtaque;
         
         PROCEDURE atacar
@@ -520,6 +524,7 @@
                    INSERT into Bitacora values(bitacora_sequence.nextval, sysdate, cantoro, canthierro, cantmadera, cantcoronas,'ATK', reinoAtacante);
               END LOOP;
             close curataque;
+            commit;
         END;
         
         procedure monitoriar  is
@@ -664,7 +669,8 @@
               ||rpad(bita.cantcoronas,15,' ')||rpad(bita.tipotransaccion,15,' '));
                   
                       
-             end loop;       
+             end loop;
+             commit;
         end monitoriar;
     
     END AOE;
