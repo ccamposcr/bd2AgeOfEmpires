@@ -31,3 +31,5 @@ insert into tropas VALUES(tropas_sequence.nextval,4,'Magos',50,50,50,1,40);
 
 insert into defensas VALUES(defensa_sequence.nextval,1,'Cañones',1000,500,2000,450,20);
 insert into defensas VALUES(defensa_sequence.nextval,2,'Torres',2000,1000,800,650,15);
+
+commit;
