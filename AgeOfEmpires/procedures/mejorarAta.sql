@@ -37,6 +37,7 @@ begin
     set puntosAtaque=puntosAtaque+puntosata+300 ,
     cantcoronas=cantcoronas +5
     where idreino =reinoid;
+    commit;
     end if;
   end loop;
 Exception
