@@ -311,7 +311,7 @@
            cursor rein is
            select tesoro_idtesoro tesoro,reservacentral_idreserva reserva
            from reino
-           where nombre = nombreRei; 
+           where UPPER(nombre) = UPPER(nombreRei); 
         begin
           select idreino into reinoid
           from reino
@@ -352,7 +352,7 @@
         begin
           select idreino into reinoid
           from reino
-          where nombre = nombRei;
+          where UPPER(nombre) = UPPER(nombRei);
           
           for def in rein loop
             update tesoro

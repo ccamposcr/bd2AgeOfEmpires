@@ -4,7 +4,7 @@ create or replace procedure mejorarAtaque(nomReino varchar2 ) is
    cursor rein is
    select tesoro_idtesoro tesoro,reservacentral_idreserva reserva
    from reino
-   where nombre=nombRei;
+   where UPPER(nombre)=UPPER(nombRei);
 begin
   select idreino into reinoid
   from reino
