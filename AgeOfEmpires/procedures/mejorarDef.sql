@@ -8,7 +8,7 @@ create or replace procedure mejorarDefensa(nomReino varchar2 ) is
 begin
   select idreino into reinoid
   from reino
-  where nombre = nombreRei; 
+  where UPPER(nombre) = UPPER(nombreRei); 
   for def in rein loop
     update tesoro
     set cantoro=cantoro-2000,

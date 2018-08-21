@@ -315,7 +315,7 @@
         begin
           select idreino into reinoid
           from reino
-          where nombre = nombreRei; 
+          where UPPER(nombre) = UPPER(nombreRei); 
           for def in rein loop
             update tesoro
             set cantoro=cantoro-2000,
@@ -348,7 +348,7 @@
            cursor rein is
            select tesoro_idtesoro tesoro,reservacentral_idreserva reserva
            from reino
-           where nombre=nombRei;
+           where UPPER(nombre) = UPPER(nombRei);
         begin
           select idreino into reinoid
           from reino
