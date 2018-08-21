@@ -1,9 +1,10 @@
 create or replace procedure mejorarAtaque(nomReino varchar2 ) is
     error Exception;   
    reinoid number(15);
+  puntosata number(15);
    nombRei varchar2(200):=nomReino;
    cursor rein is
-   select tesoro_idtesoro tesoro,reservacentral_idreserva reserva,t.cantoro cant,t.cantmadera mad,t.canthierro hierr 
+   select tesoro_idtesoro tesoro,reservacentral_idreserva reserva,t.cantoro cant,t.cantmadera mad,t.canthierro hierr ,puntosataque
    from reino
    join tesoro t on (t.idtesoro=reino.tesoro_idtesoro)
    where UPPER(nombre)=UPPER(nombRei);
@@ -31,9 +32,9 @@ begin
     where idreserva=def.reserva;
 
     insert into bitacora values (bitacora_sequence.nextval,sysdate,1500,300,200,5,'M+A',reinoid);
-    
+    puntosata :=def.puntosataque*10/100;
     update reino
-    set puntosAtaque=puntosAtaque * 10/100+300,
+    set puntosAtaque=puntosAtaque+puntosata+300 ,
     cantcoronas=cantcoronas +5
     where idreino =reinoid;
     end if;

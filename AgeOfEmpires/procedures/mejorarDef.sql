@@ -1,6 +1,7 @@
 create or replace procedure mejorarDefensa(nomReino varchar2 ) is
    error Exception;
    reinoid number(15);
+   puntosDef number(15); 
    nombreRei  varchar2(200):=nomReino; 
    cursor rein is
    select tesoro_idtesoro tesoro,reservacentral_idreserva reserva,t.cantoro cant, t.cantmadera mad ,t.canthierro hierr,puntosdefensa
@@ -31,11 +32,13 @@ begin
     where idreserva=def.reserva;
 
     insert into bitacora values (bitacora_sequence.nextval,sysdate,2000,150,100,40,'M+D',reinoid);
-
+     puntosDef:=def.puntosdefensa+ (def.puntosdefensa*10/100)+500;
+    
     update reino
-    set puntosdefensa=(puntosdefensa * 10/100)+500,
+    set puntosdefensa=puntosDef,
     cantcoronas=cantcoronas +40
-    where idreino =reinoid;
+    where idreino =reinoid;        
+
    end if;
  end loop;
 Exception

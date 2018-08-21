@@ -306,101 +306,104 @@
         END;
         
         procedure mejorarDefensa(nomReino varchar2 ) is
-          error Exception;   
-          reinoid number(15);
-          nombreRei  varchar2(200):=nomReino; 
-          cursor rein is
-          select tesoro_idtesoro tesoro,reservacentral_idreserva reserva,t.cantoro cant
-          from reino
-          join tesoro t on (t.idtesoro=reino.tesoro_idtesoro)
-          where UPPER(nombre) = UPPER(nombreRei); 
+         error Exception;
+         reinoid number(15);
+         puntosDef number(15); 
+         nombreRei  varchar2(200):=nomReino; 
+         cursor rein is
+         select tesoro_idtesoro tesoro,reservacentral_idreserva reserva,t.cantoro cant, t.cantmadera mad ,t.canthierro hierr,puntosdefensa
+         from reino
+         join tesoro t on (t.idtesoro=reino.tesoro_idtesoro)
+         where UPPER(nombre) = UPPER(nombreRei); 
        begin
-        select idreino into reinoid
-        from reino
-        where UPPER(nombre) = UPPER(nombreRei); 
+       select idreino into reinoid
+       from reino
+       where UPPER(nombre) = UPPER(nombreRei); 
        for def in rein loop
-               
-       if def.cant< 2000 then
-
-        raise error; 
+          
+        if def.cant< 2000 and def.mad <100 and def.hierr < 150  then
+     
+         raise error; 
     
-       else 
+        else 
         update tesoro
         set cantoro=cantoro-2000,
         cantmadera=cantmadera-100,
         canthierro=canthierro-150
         where idtesoro=def.tesoro;
 
-        update reservacentral
-        set cantoro=cantoro+2000,
-        cantmadera=cantmadera+100,
-        canthierro=canthierro+150
-        where idreserva=def.reserva;
+       update reservacentral
+       set cantoro=cantoro+2000,
+       cantmadera=cantmadera+100,
+      canthierro=canthierro+150
+      where idreserva=def.reserva;
 
-        insert into bitacora values (bitacora_sequence.nextval,sysdate,2000,150,100,40,'M+D',reinoid);
-
-        update reino
-         set puntosdefensa=(puntosdefensa * 10/100)+500,
-         cantcoronas=cantcoronas +40
-         where idreino =reinoid;
-       end if;
-      end loop;
-      commit;
-    Exception
+      insert into bitacora values (bitacora_sequence.nextval,sysdate,2000,150,100,40,'M+D',reinoid);
+      puntosDef:=def.puntosdefensa+ (def.puntosdefensa*10/100)+500;
+    
+     update reino
+     set puntosdefensa=puntosDef,
+     cantcoronas=cantcoronas +40
+     where idreino =reinoid;        
+       commit;
+     end if;
+  end loop;
+  Exception
      when no_data_found 
      then DBMS_OUTPUT.PUT_LINE('El reino no se encontro');
      when error then 
-     DBMS_OUTPUT.PUT_LINE('El reino no tiene sufiente oro');
-     
-  end mejorarDefensa;
+     DBMS_OUTPUT.PUT_LINE('El reino no tiene sufiente recursos de madera,oro o hierro');   
+       
+   end mejorarDefensa;
 
-        procedure mejorarAtaque(nomReino varchar2 ) is
+      procedure mejorarAtaque(nomReino varchar2 ) is
          error Exception;   
          reinoid number(15);
+         puntosata number(15);
          nombRei varchar2(200):=nomReino;
          cursor rein is
-         select tesoro_idtesoro tesoro,reservacentral_idreserva reserva,t.cantoro cant
+         select tesoro_idtesoro tesoro,reservacentral_idreserva reserva,t.cantoro cant,t.cantmadera mad,t.canthierro hierr ,puntosataque
          from reino
          join tesoro t on (t.idtesoro=reino.tesoro_idtesoro)
          where UPPER(nombre)=UPPER(nombRei);
        begin
-        select idreino into reinoid
-        from reino
-        where UPPER(nombre) = UPPER(nombRei);
+         select idreino into reinoid
+         from reino
+         where UPPER(nombre) = UPPER(nombRei);
   
        for def in rein loop
-        if def.cant< 1500 then
+         if def.cant< 1500 and def.mad<300 and def.hierr <200 then
       
-          raise error; 
+            raise error; 
     
-        else   
-          update tesoro
+         else   
+         update tesoro
           set cantoro=cantoro-1500,
           cantmadera=cantmadera-300,
           canthierro=canthierro-200
           where idtesoro=def.tesoro;
 
          update reservacentral
-         set cantoro=cantoro+1500,
-         cantmadera=cantmadera+300,
-         canthierro=canthierro+200
+        set cantoro=cantoro+1500,
+        cantmadera=cantmadera+300,
+        canthierro=canthierro+200
          where idreserva=def.reserva;
 
          insert into bitacora values (bitacora_sequence.nextval,sysdate,1500,300,200,5,'M+A',reinoid);
+         puntosata :=def.puntosataque*10/100;
          update reino
-         set puntosataque=(puntosataque * 10/100)+500,
-         cantcoronas=cantcoronas +40
+         set puntosAtaque=puntosAtaque+puntosata+300 ,
+         cantcoronas=cantcoronas +5
          where idreino =reinoid;
          end if;
-        end loop;
-        commit;
-       Exception
-        when no_data_found 
-        then DBMS_OUTPUT.PUT_LINE('El Reino no se encontro');
-        when error then 
-        DBMS_OUTPUT.PUT_LINE('El reino no tiene sufiente oro');
+      end loop;
+   Exception
+     when no_data_found 
+     then DBMS_OUTPUT.PUT_LINE('El Reino no se encontro');
+     when error then 
+     DBMS_OUTPUT.PUT_LINE('El reino no tiene sufiente recursos de hierro,madera y oro');
         
-      end mejorarAtaque;
+   end mejorarAtaque;
         
         PROCEDURE atacar
          ( reinoAtacante int, reinoDefensa int)
