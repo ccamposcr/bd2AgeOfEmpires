@@ -1,6 +1,6 @@
-execute AOE.monitoriar():
+execute AOE.monitoriar();
 execute AOE.mejorarDefensa('Acuario');
-execute AOE.comprarDefensas('torres','Acuario',20);
+execute AOE.comprarDefensas('Torres','Acuario',20);
 execute AOE.entrenarEjercitos('magos','Capricornio',30);
 execute AOE.atacar(4,7);
 execute AOE.entrenarEjercitos('Caballeros','Sagitario',24);
