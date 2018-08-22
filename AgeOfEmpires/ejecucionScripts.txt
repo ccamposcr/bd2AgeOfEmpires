@@ -1,0 +1,738 @@
+SQL> start pruebas_bloque_1
+SQL> execute AOE.comprar('Madera','Acuario',20000);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.comprar('Hierro','Acuario',30000);
+No hay suficiente hierro en la reserva Central o No tiene suficiente Oro en el  
+reino                                                                           
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.comprar('Madera','Capricornio',12000);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.comprar('Hierro','Capricornio',10000);
+No hay suficiente hierro en la reserva Central o No tiene suficiente Oro en el  
+reino                                                                           
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.entrenarEjercitos('Caballeros','Sagitario',10);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.comprar('Madera','Sagitario',15000);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.entrenarEjercitos('Arqueras','Escorpion',40);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.entrenarEjercitos('Magos','Escorpion',30);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.entrenarEjercitos('Piqueros','Libra',50);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.comprarDefensas('Torres','Libra',4);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.comprar('Hierro','Virgo',6000);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.comprarDefensas('Canones','Virgo',6);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.entrenarEjercitos('Caballeros','Leo',60);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.entrenarEjercitos('Magos','Leo',40);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.vender('Hierro','Cancer',4000);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.comprarDefensas('Torres','Cancer',30);
+No hay suficiente oro, hiero o madera en el reino                               
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.entrenarEjercitos('Arqueras','Geminis',50);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.entrenarEjercitos('Piqueros','Geminis',50);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.comprarDefensas('Canones','Tauro',15);
+No hay suficiente oro, hiero o madera en el reino                               
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.mejorarDefensa('Tauro');
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.entrenarEjercitos('Piqueros','Aries',60);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.mejorarAtaque('Aries');
+
+PL/SQL procedure successfully completed.
+
+SQL> start pruebas_bloque_2
+SQL> execute AOE.monitoriar;
+Reserva                                                                         
+Oro 5136491     Madera1985500      Hierro2032350     Precio MaderaPrecio        
+Hierro3.9252                                                                    
+Reino                                                                           
+ACUARIO                                                                         
+CANCER         351900                                                           
+PISCIS         319480                                                           
+TAURO          313500                                                           
+ARIES          286900                                                           
+LEO            282500                                                           
+ESCORPION      278510                                                           
+GEMINIS        272870                                                           
+CAPRICORNIO    270880                                                           
+SAGITARIO      255290                                                           
+LIBRA          246500                                                           
+VIRGO          156780                                                           
+Bitacora                                                                        
+21-AUG-18 06.3640000             10000          20000          0                
+CMP                                                                             
+21-AUG-18 06.360                 10000          40000          5                
+CMP                                                                             
+21-AUG-18 06.3640000             10000          20000          0                
+CMP                                                                             
+21-AUG-18 06.3615760             10000          32000          5                
+CMP                                                                             
+21-AUG-18 06.3640000             10000          20000          0                
+TRP                                                                             
+21-AUG-18 06.3639000             9700           19800          50               
+CMP                                                                             
+21-AUG-18 06.3640000             10000          20000          0                
+TRP                                                                             
+21-AUG-18 06.3639200             8400           16000          80               
+TRP                                                                             
+21-AUG-18 06.3640000             10000          20000          0                
+TRP                                                                             
+21-AUG-18 06.3638750             7000           16500          150              
+DEF                                                                             
+21-AUG-18 06.3640000             10000          20000          0                
+CMP                                                                             
+21-AUG-18 06.3616160             16000          20000          5                
+DEF                                                                             
+21-AUG-18 06.3640000             10000          20000          0                
+TRP                                                                             
+21-AUG-18 06.3634000             8200           18800          300              
+TRP                                                                             
+21-AUG-18 06.3640000             10000          20000          0                
+VTA                                                                             
+21-AUG-18 06.3655857             6000           20000          10               
+DEF                                                                             
+21-AUG-18 06.3640000             10000          20000          0                
+TRP                                                                             
+21-AUG-18 06.3639000             8000           15000          100              
+TRP                                                                             
+21-AUG-18 06.3640000             10000          20000          0                
+DEF                                                                             
+21-AUG-18 06.362000              150            100            40               
+M+D                                                                             
+21-AUG-18 06.3640000             10000          20000          0                
+TRP                                                                             
+21-AUG-18 06.361500              300            200            5                
+M+A                                                                             
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.comprarDefensas('Canones','Acuario',10);
+No hay suficiente oro, hiero o madera en el reino                               
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.comprarDefensas('Torres','Acuario',10);
+No hay suficiente oro, hiero o madera en el reino                               
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.entrenarEjercitos('Arqueras','Capricornio',60);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.entrenarEjercitos('Caballeros','Capricornio',40);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.entrenarEjercitos('Magos','Sagitario',10);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.mejorarAtaque('Sagitario');
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.mejorarAtaque('Escorpion');
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.mejorarAtaque('Escorpion');
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.entrenarEjercitos('Magos','Libra',20);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.mejorarDefensa('Libra');
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.comprarDefensas('Canones','Virgo',20);
+No hay suficiente oro, hiero o madera en el reino                               
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.mejorarDefensa('Virgo');
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.entrenarEjercitos('Piqueros','Leo',40);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.mejorarAtaque('Leo');
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.comprarDefensas('Canones','Cancer',25);
+No hay suficiente oro, hiero o madera en el reino                               
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.mejorarDefensa('Cancer');
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.entrenarEjercitos('Magos','Geminis',20);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.entrenarEjercitos('Caballeros','Geminis',30);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.vender('Hierro','Tauro',50000);
+No hay suficiente oro en la reserva Central o No tiene suficiente hierro en el  
+reino                                                                           
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.vender('Madera','Tauro',50000);
+No hay suficiente oro en la reserva Central o No tiene suficiente madera en el  
+reino                                                                           
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.entrenarEjercitos('Arqueras','Aries',60);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.entrenarEjercitos('Magos','Aries',30);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.mejorarAtaque('Piscis');
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.entrenarEjercitos('Caballeros','Piscis',35);
+
+PL/SQL procedure successfully completed.
+
+SQL> start pruebas_bloque_3
+SQL> execute AOE.monitoriar;
+Reserva                                                                         
+Oro 5167891     Madera2008200      Hierro2048150     Precio MaderaPrecio        
+Hierro3.8593                                                                    
+Reino                                                                           
+ACUARIO                                                                         
+CANCER         702430                                                           
+TAURO          626570                                                           
+PISCIS         624140                                                           
+LEO            545760                                                           
+ESCORPION      542260                                                           
+GEMINIS        526150                                                           
+ARIES          519290                                                           
+SAGITARIO      494850                                                           
+CAPRICORNIO    490220                                                           
+LIBRA          476560                                                           
+VIRGO          306980                                                           
+Bitacora                                                                        
+21-AUG-18 06.3640000             10000          20000          0                
+CMP                                                                             
+21-AUG-18 06.360                 10000          40000          5                
+CMP                                                                             
+21-AUG-18 06.3640000             10000          20000          0                
+CMP                                                                             
+21-AUG-18 06.3615760             10000          32000          5                
+CMP                                                                             
+21-AUG-18 06.3640000             10000          20000          0                
+TRP                                                                             
+21-AUG-18 06.3639000             9700           19800          50               
+CMP                                                                             
+21-AUG-18 06.3640000             10000          20000          0                
+TRP                                                                             
+21-AUG-18 06.3639200             8400           16000          80               
+TRP                                                                             
+21-AUG-18 06.3640000             10000          20000          0                
+TRP                                                                             
+21-AUG-18 06.3638750             7000           16500          150              
+DEF                                                                             
+21-AUG-18 06.3640000             10000          20000          0                
+CMP                                                                             
+21-AUG-18 06.3616160             16000          20000          5                
+DEF                                                                             
+21-AUG-18 06.3640000             10000          20000          0                
+TRP                                                                             
+21-AUG-18 06.3634000             8200           18800          300              
+TRP                                                                             
+21-AUG-18 06.3640000             10000          20000          0                
+VTA                                                                             
+21-AUG-18 06.3655857             6000           20000          10               
+DEF                                                                             
+21-AUG-18 06.3640000             10000          20000          0                
+TRP                                                                             
+21-AUG-18 06.3639000             8000           15000          100              
+TRP                                                                             
+21-AUG-18 06.3640000             10000          20000          0                
+DEF                                                                             
+21-AUG-18 06.362000              150            100            40               
+M+D                                                                             
+21-AUG-18 06.3640000             10000          20000          0                
+TRP                                                                             
+21-AUG-18 06.361500              300            200            5                
+M+A                                                                             
+21-AUG-18 06.360                 10000          40000          5                
+DEF                                                                             
+21-AUG-18 06.360                 10000          40000          5                
+DEF                                                                             
+21-AUG-18 06.3615760             10000          32000          5                
+TRP                                                                             
+21-AUG-18 06.3614560             7600           26000          125              
+TRP                                                                             
+21-AUG-18 06.368532              9700           34800          55               
+TRP                                                                             
+21-AUG-18 06.361500              300            200            5                
+M+A                                                                             
+21-AUG-18 06.361500              300            200            5                
+M+A                                                                             
+21-AUG-18 06.361500              300            200            5                
+M+A                                                                             
+21-AUG-18 06.3630750             3800           12500          210              
+TRP                                                                             
+21-AUG-18 06.362000              150            100            40               
+M+D                                                                             
+21-AUG-18 06.3610160             4000           17000          125              
+DEF                                                                             
+21-AUG-18 06.362000              150            100            40               
+M+D                                                                             
+21-AUG-18 06.3632000             6200           16800          340              
+TRP                                                                             
+21-AUG-18 06.361500              300            200            5                
+M+A                                                                             
+21-AUG-18 06.3655857             6000           20000          10               
+DEF                                                                             
+21-AUG-18 06.362000              150            100            40               
+M+D                                                                             
+21-AUG-18 06.3637750             5000           11500          250              
+TRP                                                                             
+21-AUG-18 06.3636750             4000           10500          270              
+TRP                                                                             
+21-AUG-18 06.3638000             9850           19900          40               
+VTA                                                                             
+21-AUG-18 06.3638000             9850           19900          40               
+VTA                                                                             
+21-AUG-18 06.3637000             6200           15500          185              
+TRP                                                                             
+21-AUG-18 06.3635800             3800           9500           305              
+TRP                                                                             
+21-AUG-18 06.361500              300            200            5                
+M+A                                                                             
+21-AUG-18 06.3638500             9800           19700          5                
+TRP                                                                             
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.mejorarDefensa('Acuario');
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.mejorarDefensa('Acuario');
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.mejorarAtaque('Capricornio');
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.atacar(4,7);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.mejorarAtaque('Sagitario');
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.atacar(10,5);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.entrenarEjercitos('Magos','Escorpion',30);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.atacar(5,3);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.atacar(8,10);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.mejorarDefensa('Libra');
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.mejorarDefensa('Virgo');
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.vender('Hierro','Virgo',2000);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.atacar(7,1);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.atacar(7,6);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.comprarDefensas('Torres','Cancer',10);
+No hay suficiente oro, hiero o madera en el reino                               
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.comprarDefensas('Canones','Cancer',10);
+No hay suficiente oro, hiero o madera en el reino                               
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.mejorarAtaque('Geminis');
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.atacar(6,8);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.comprarDefensas('Torres','Tauro',20);
+No hay suficiente oro, hiero o madera en el reino                               
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.mejorarDefensa('Tauro');
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.atacar(2,12);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.atacar(2,12);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.mejorarAtaque('Piscis');
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.atacar(9,3);
+
+PL/SQL procedure successfully completed.
+
+SQL> start pruebas_bloque_4
+SQL> execute AOE.monitoriar();
+Reserva                                                                         
+Oro 5177684     Madera2011400      Hierro2053200     Precio MaderaPrecio        
+Hierro3.8498                                                                    
+Reino                                                                           
+ACUARIO                                                                         
+CANCER         943280                                                           
+TAURO          933600                                                           
+PISCIS         909930                                                           
+LEO            722080                                                           
+GEMINIS        717180                                                           
+ESCORPION      704480                                                           
+ARIES          690480                                                           
+CAPRICORNIO    687100                                                           
+LIBRA          642940                                                           
+SAGITARIO      587230                                                           
+VIRGO          446760                                                           
+Bitacora                                                                        
+21-AUG-18 06.3640000             10000          20000          0                
+CMP                                                                             
+21-AUG-18 06.360                 10000          40000          5                
+CMP                                                                             
+21-AUG-18 06.3640000             10000          20000          0                
+CMP                                                                             
+21-AUG-18 06.3615760             10000          32000          5                
+CMP                                                                             
+21-AUG-18 06.3640000             10000          20000          0                
+TRP                                                                             
+21-AUG-18 06.3639000             9700           19800          50               
+CMP                                                                             
+21-AUG-18 06.3640000             10000          20000          0                
+TRP                                                                             
+21-AUG-18 06.3639200             8400           16000          80               
+TRP                                                                             
+21-AUG-18 06.3640000             10000          20000          0                
+TRP                                                                             
+21-AUG-18 06.3638750             7000           16500          150              
+DEF                                                                             
+21-AUG-18 06.3640000             10000          20000          0                
+CMP                                                                             
+21-AUG-18 06.3616160             16000          20000          5                
+DEF                                                                             
+21-AUG-18 06.3640000             10000          20000          0                
+TRP                                                                             
+21-AUG-18 06.3634000             8200           18800          300              
+TRP                                                                             
+21-AUG-18 06.3640000             10000          20000          0                
+VTA                                                                             
+21-AUG-18 06.3655857             6000           20000          10               
+DEF                                                                             
+21-AUG-18 06.3640000             10000          20000          0                
+TRP                                                                             
+21-AUG-18 06.3639000             8000           15000          100              
+TRP                                                                             
+21-AUG-18 06.3640000             10000          20000          0                
+DEF                                                                             
+21-AUG-18 06.362000              150            100            40               
+M+D                                                                             
+21-AUG-18 06.3640000             10000          20000          0                
+TRP                                                                             
+21-AUG-18 06.361500              300            200            5                
+M+A                                                                             
+21-AUG-18 06.360                 10000          40000          5                
+DEF                                                                             
+21-AUG-18 06.360                 10000          40000          5                
+DEF                                                                             
+21-AUG-18 06.3615760             10000          32000          5                
+TRP                                                                             
+21-AUG-18 06.3614560             7600           26000          125              
+TRP                                                                             
+21-AUG-18 06.368532              9700           34800          55               
+TRP                                                                             
+21-AUG-18 06.361500              300            200            5                
+M+A                                                                             
+21-AUG-18 06.361500              300            200            5                
+M+A                                                                             
+21-AUG-18 06.361500              300            200            5                
+M+A                                                                             
+21-AUG-18 06.3630750             3800           12500          210              
+TRP                                                                             
+21-AUG-18 06.362000              150            100            40               
+M+D                                                                             
+21-AUG-18 06.3610160             4000           17000          125              
+DEF                                                                             
+21-AUG-18 06.362000              150            100            40               
+M+D                                                                             
+21-AUG-18 06.3632000             6200           16800          340              
+TRP                                                                             
+21-AUG-18 06.361500              300            200            5                
+M+A                                                                             
+21-AUG-18 06.3655857             6000           20000          10               
+DEF                                                                             
+21-AUG-18 06.362000              150            100            40               
+M+D                                                                             
+21-AUG-18 06.3637750             5000           11500          250              
+TRP                                                                             
+21-AUG-18 06.3636750             4000           10500          270              
+TRP                                                                             
+21-AUG-18 06.3638000             9850           19900          40               
+VTA                                                                             
+21-AUG-18 06.3638000             9850           19900          40               
+VTA                                                                             
+21-AUG-18 06.3637000             6200           15500          185              
+TRP                                                                             
+21-AUG-18 06.3635800             3800           9500           305              
+TRP                                                                             
+21-AUG-18 06.361500              300            200            5                
+M+A                                                                             
+21-AUG-18 06.3638500             9800           19700          5                
+TRP                                                                             
+21-AUG-18 06.362000              150            100            40               
+M+D                                                                             
+21-AUG-18 06.362000              150            100            40               
+M+D                                                                             
+21-AUG-18 06.361500              300            200            5                
+M+A                                                                             
+21-AUG-18 06.369060              6200           24900          330              
+ATK                                                                             
+21-AUG-18 06.361500              300            200            5                
+M+A                                                                             
+21-AUG-18 06.365032              8800           33700          75               
+ATK                                                                             
+21-AUG-18 06.3634700             2275           4865           120              
+TRP                                                                             
+21-AUG-18 06.3633200             775            3365           150              
+ATK                                                                             
+21-AUG-18 06.3627750             2650           11400          270              
+ATK                                                                             
+21-AUG-18 06.362000              150            100            40               
+M+D                                                                             
+21-AUG-18 06.362000              150            100            40               
+M+D                                                                             
+21-AUG-18 06.366160              3700           16800          205              
+VTA                                                                             
+21-AUG-18 06.3629500             1260           4795           465              
+ATK                                                                             
+21-AUG-18 06.3628500             1260           4795           467              
+ATK                                                                             
+21-AUG-18 06.3653857             2048           6965           50               
+DEF                                                                             
+21-AUG-18 06.3653857             2048           6965           50               
+DEF                                                                             
+21-AUG-18 06.361500              300            200            5                
+M+A                                                                             
+21-AUG-18 06.3632250             885            3165           425              
+ATK                                                                             
+21-AUG-18 06.3638000             9850           19900          40               
+DEF                                                                             
+21-AUG-18 06.362000              150            100            40               
+M+D                                                                             
+21-AUG-18 06.3634300             2300           8000           335              
+ATK                                                                             
+21-AUG-18 06.3633300             2300           8000           337              
+ATK                                                                             
+21-AUG-18 06.361500              300            200            5                
+M+A                                                                             
+21-AUG-18 06.3633500             8550           18700          185              
+ATK                                                                             
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.mejorarDefensa('Acuario');
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.comprarDefensas('Torres','Acuario',20);
+No hay suficiente oro, hiero o madera en el reino                               
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.entrenarEjercitos('magos','Capricornio',30);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.atacar(4,7);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.entrenarEjercitos('Caballeros','Sagitario',24);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.atacar(10,4);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.entrenarEjercitos('Magos','Escorpion',20);
+No hay suficiente oro, hiero o madera en el reino                               
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.atacar(5,8);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.entrenarEjercitos('Magos','Libra',20);
+No hay suficiente oro, hiero o madera en el reino                               
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.atacar(8,5);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.comprar('Madera','Virgo',5000);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.comprarDefensas('Torres','Virgo',15);
+No hay suficiente oro, hiero o madera en el reino                               
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.comprarDefensas('Caballeros','Leo',20);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.atacar(7,6);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.mejorarDefensa('Cancer');
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.atacar(3,8);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.mejorarAtaque('Geminis');
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.atacar(6,7);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.comprarDefensas('Canones','Tauro',12);
+No hay suficiente oro, hiero o madera en el reino                               
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.comprarDefensas('Torres','Tauro',8);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.atacar(2,6);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.atacar(2,11);
+
+PL/SQL procedure successfully completed.
+
+SQL> execute AOE.atacar(9,12);
+
+PL/SQL procedure successfully completed.
+
+SQL> spool off
