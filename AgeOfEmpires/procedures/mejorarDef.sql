@@ -37,7 +37,8 @@ begin
     update reino
     set puntosdefensa=puntosDef,
     cantcoronas=cantcoronas +40
-    where idreino =reinoid;        
+    where idreino =reinoid; 
+    commit;       
 
    end if;
  end loop;
